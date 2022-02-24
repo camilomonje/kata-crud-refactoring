@@ -1,4 +1,4 @@
-package co.com.sofka.crud.repository;
+package co.com.sofka.crud.repository.toDo;
 
 import co.com.sofka.crud.models.dto.ToDoDto;
 
