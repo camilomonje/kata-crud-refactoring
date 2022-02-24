@@ -2,7 +2,6 @@ package co.com.sofka.crud.models.entity;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "todos")
 public class ToDo {
@@ -11,7 +10,7 @@ public class ToDo {
     private Long id;
     private String nombre;
     private boolean completado;
-    private String idGrupoLista;
+    private Long grupoId;
 
     public Long getId() {
         return id;
@@ -37,11 +36,11 @@ public class ToDo {
         this.completado = completado;
     }
 
-    public String getIdGrupoLista() {
-        return idGrupoLista;
+    public Long getGrupoId() {
+        return grupoId;
     }
 
-    public void setIdGrupoLista(String idGrupoLista) {
-        this.idGrupoLista = idGrupoLista;
+    public void setGrupoId(Long grupoId) {
+        this.grupoId = grupoId;
     }
 }

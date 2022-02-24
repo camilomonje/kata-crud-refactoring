@@ -10,7 +10,7 @@ public interface ToDoMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "completado", target = "completed"),
-            @Mapping(source = "idGrupoLista", target = "groupListId")
+            @Mapping(source = "grupoId", target = "groupId")
     })
     ToDoDto toToDoDto(ToDo toDo);
     Iterable<ToDoDto> toToDoDtos(Iterable<ToDo> toDos);

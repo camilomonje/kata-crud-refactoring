@@ -2,10 +2,10 @@ package co.com.sofka.crud.models.dto;
 
 public class ToDoDto {
 
-    private Long id;
-    private String name;
+    private Long    id;
+    private String  name;
     private boolean completed;
-    private String groupListId;
+    private Long    groupId;
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class ToDoDto {
         this.completed = completed;
     }
 
-    public String getGroupListId() {
-        return groupListId;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 }
