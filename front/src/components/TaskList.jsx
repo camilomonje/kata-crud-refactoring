@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Store from "./Store.js";
 import C from "../utils/constants";
 import Task from "./Task.jsx";
@@ -54,9 +54,11 @@ const TaskList = (props) => {
   };
 
   const todoList = props.todoList;
+  console.log("Reinicio")
+  console.log(todoList)
   if (todoList) {
     return (
-      <div>
+      <div> 
         <table>
           <thead>
             <tr>

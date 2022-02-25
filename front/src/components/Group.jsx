@@ -6,12 +6,24 @@ const Group = ({ onDelete, group }) => {
   return (
     <Fragment>
       <div>
-        <h5>{group.groupName}</h5>
-        <button onClick={() => onDelete(group.groupId)}>Eliminar</button>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <h5>{group.groupName}</h5>
+              </td>
+              <td>
+                <button onClick={() => onDelete(group.groupId)}>
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div>
-        <TaskForm groupId={group.groupId}/>
+        <TaskForm groupId={group.groupId} />
       </div>
       <div>
         <TaskList todoList={group.toDoDtos} />

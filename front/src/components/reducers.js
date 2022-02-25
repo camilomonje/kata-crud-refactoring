@@ -42,6 +42,7 @@ function reducer(state, action) {
       todoUpList.list = action.list;
       return { ...state, todo: todoUpList };
     case "edit-item":
+      console.log("edit")
       const todoUpEdit = state.todo;
       todoUpEdit.item = action.item;
       return { ...state, todo: todoUpEdit };
