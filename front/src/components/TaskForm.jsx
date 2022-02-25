@@ -1,9 +1,9 @@
 import React, { useRef, useState, useContext } from "react";
-import Store from "./Store";
+import Store from "./Store.js";
 import C from "../utils/constants";
 const HOST_API = C.HOST_API;
 
-const Form = () => {
+const TaskForm = ({groupId}) => {
   const formRef = useRef(null);
   const {
     dispatch,
@@ -17,8 +17,8 @@ const Form = () => {
 
     const request = {
       name: state.name,
-      id: null,
       completed: false,
+      groupId: groupId
     };
 
     fetch(HOST_API + "/todo", {
@@ -61,6 +61,7 @@ const Form = () => {
   };
 
   return (
+    <div>
     <form ref={formRef}>
       <input
         type="text"
@@ -74,6 +75,7 @@ const Form = () => {
       {item.id && <button onClick={onEdit}>Actualizar</button>}
       {!item.id && <button onClick={onAdd}>Crear</button>}
     </form>
+    </div>
   );
 };
-export default Form;
+export default TaskForm;

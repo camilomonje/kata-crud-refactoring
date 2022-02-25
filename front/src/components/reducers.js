@@ -1,18 +1,30 @@
-import React, { createContext, useReducer } from "react";
-
-const initialState = {
-  todo: { list: [], item: {} },
-};
-const Store = createContext(initialState);
-
 function reducer(state, action) {
   switch (action.type) {
+    case "update-listGroup":
+      const groupUpList = state.group;
+      groupUpList.listGroup = action.listGroup;
+      return { ...state, group: groupUpList };
+
+    case "add-group":
+      const groupUp = state.group.listGroup;
+      groupUp.push(action.itemGroup);
+      return { ...state, group: { listGroup: groupUp, itemGroup: {} } };
+    
+      case "delete-group":
+      const groupUpDelete = state.group;
+      const listGroupUpdate = groupUpDelete.listGroup.filter((item) => {
+        return item.groupId !== action.id;
+      });
+      groupUpDelete.listGroup = listGroupUpdate;
+      return { ...state, group: groupUpDelete };
+
     case "update-item":
       const todoUpItem = state.todo;
       const listUpdateEdit = todoUpItem.list.map((item) => {
         if (item.id === action.item.id) {
           return action.item;
         }
+
         return item;
       });
       todoUpItem.list = listUpdateEdit;
@@ -41,12 +53,4 @@ function reducer(state, action) {
       return state;
   }
 }
-
-export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  return (
-    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
-  );
-};
-export default Store;
+export default reducer;

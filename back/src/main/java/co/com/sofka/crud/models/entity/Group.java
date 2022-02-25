@@ -12,7 +12,7 @@ public class Group {
     private String grupoNombre;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "grupos")
+    @JoinColumn(name = "grupoId")
     private List<ToDo> toDos;
 
     public List<ToDo> getToDos() {
