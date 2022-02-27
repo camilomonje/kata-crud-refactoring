@@ -16,10 +16,10 @@ const GroupForm = () => {
     event.preventDefault();
 
     const request = {
-      groupName : state.groupName,
-      toDoDtos: []
+      groupName: state.groupName,
+      toDoDtos: [],
     };
-    
+
     fetch(HOST_API + "/group", {
       method: "POST",
       body: JSON.stringify(request),
@@ -29,7 +29,6 @@ const GroupForm = () => {
     })
       .then((response) => response.json())
       .then((group) => {
-        console.log(group);
         dispatch({ type: "add-group", itemGroup: group });
         setState({ groupName: "" });
         formGroupRef.current.reset();
@@ -38,11 +37,21 @@ const GroupForm = () => {
 
   return (
     <form ref={formGroupRef}>
-      <input type="text" placeholder="Lista de TO-DO" name="groupName"
-      onChange={(event) => {
-        setState({ ...state, groupName: event.target.value });
-      }} />
-      <button onClick={onAdd}>Nueva Lista</button>
+      <input
+        type="text"
+        placeholder="Lista de TO-DO"
+        name="groupName"
+        onChange={(event) => {
+          setState({ ...state, groupName: event.target.value.toUpperCase() });
+        }}
+      />
+      <button
+        className="btn-success"
+        disabled={!state.groupName}
+        onClick={onAdd}
+      >
+        Nueva Lista
+      </button>
     </form>
   );
 };

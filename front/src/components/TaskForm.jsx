@@ -85,8 +85,24 @@ const TaskForm = ({ group }) => {
             setState({ ...state, name: event.target.value });
           }}
         ></input>
-        {est && <button onClick={onEdit}>Actualizar</button>}
-        {!est && <button onClick={onAdd}>Crear</button>}
+        {est && (
+          <button
+            className="btn-primary"
+            disabled={!state.name}
+            onClick={onEdit}
+          >
+            Actualizar
+          </button>
+        )}
+        {!est && (
+          <button
+            className="btn-success"
+            disabled={!state.name}
+            onClick={onAdd}
+          >
+            Crear
+          </button>
+        )}
       </form>
     </div>
   );

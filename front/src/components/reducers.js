@@ -78,9 +78,6 @@ function reducer(state, action) {
       return { ...state, group: groupListAct, todo: stateTodo };
 
     case "edit-item":
-      //const groupUpEdit = state.group.list;
-
-      
       const todoUpEdit = state.todo;
       todoUpEdit.item = action.item;
       return { ...state, todo: todoUpEdit };

@@ -19,7 +19,6 @@ const GroupsList = () => {
       });
   }, [dispatch]);
 
-  
   return (
     <div>
       {currentList.map((group) => {
@@ -27,6 +26,5 @@ const GroupsList = () => {
       })}
     </div>
   );
-    
 };
 export default GroupsList;

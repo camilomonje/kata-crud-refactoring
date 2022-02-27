@@ -1,19 +1,16 @@
 import React from "react";
 
-
 import Task from "./Task.jsx";
 
-
 const TaskList = (props) => {
-  
   const decorationDone = {
     textDecoration: "line-through",
   };
 
-  const todoList = props.todoList; 
+  const todoList = props.todoList;
   if (todoList) {
     return (
-      <div> 
+      <div>
         <table>
           <thead>
             <tr>
@@ -26,7 +23,7 @@ const TaskList = (props) => {
             {todoList.map((todo) => {
               return (
                 <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
-                  <Task todo={todo}/>
+                  <Task todo={todo} />
                 </tr>
               );
             })}

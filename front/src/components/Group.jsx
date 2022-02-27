@@ -6,16 +6,12 @@ import C from "../utils/constants";
 const HOST_API = C.HOST_API;
 
 const Group = ({ group }) => {
-
-  const {
-    dispatch
-  } = useContext(Store);
+  const { dispatch } = useContext(Store);
 
   const onDelete = (id) => {
-    console.log("Delete " + id);
     fetch(HOST_API + "/" + id + "/group", {
       method: "DELETE",
-    }).then((listGroup) => {
+    }).then(() => {
       dispatch({ type: "delete-group", id });
     });
   };
@@ -30,7 +26,10 @@ const Group = ({ group }) => {
                 <h5>{group.groupName}</h5>
               </td>
               <td>
-                <button onClick={() => onDelete(group.groupId)}>
+                <button
+                  className="btn-danger"
+                  onClick={() => onDelete(group.groupId)}
+                >
                   Eliminar
                 </button>
               </td>

@@ -3,12 +3,9 @@ import C from "../utils/constants";
 import Store from "./Store.js";
 const HOST_API = C.HOST_API;
 
-const Task = ({todo}) => {
+const Task = ({ todo }) => {
+  const { dispatch } = useContext(Store);
 
-  const {
-    dispatch
-  } = useContext(Store);
-  
   const onDelete = (id, groupId) => {
     fetch(HOST_API + "/" + id + "/todo", {
       method: "DELETE",
@@ -18,7 +15,6 @@ const Task = ({todo}) => {
   };
 
   const onEdit = (todo) => {
-
     dispatch({ type: "edit-item", item: todo });
   };
 
@@ -27,7 +23,7 @@ const Task = ({todo}) => {
       name: todo.name,
       id: todo.id,
       completed: event.target.checked,
-      groupId: todo.groupId
+      groupId: todo.groupId,
     };
     fetch(HOST_API + "/todo", {
       method: "PUT",
@@ -48,16 +44,28 @@ const Task = ({todo}) => {
       <td>{todo.name}</td>
       <td>
         <input
+          className="checkbox"
           type="checkbox"
           defaultChecked={todo.completed}
           onChange={(event) => onChange(event, todo)}
         ></input>
       </td>
       <td>
-        <button onClick={() => onDelete(todo.id, todo.groupId)}>Eliminar</button>
+        <button
+          className="btn-danger"
+          onClick={() => onDelete(todo.id, todo.groupId)}
+        >
+          Eliminar
+        </button>
       </td>
       <td>
-        <button disabled={todo.completed} onClick={() => onEdit(todo)}>Editar</button>
+        <button
+          className="btn-primary"
+          disabled={todo.completed}
+          onClick={() => onEdit(todo)}
+        >
+          Editar
+        </button>
       </td>
     </Fragment>
   );

@@ -6,13 +6,10 @@ import GroupsList from "./components/GroupList";
 function App() {
   return (
     <StoreProvider>
-
       <h2>Dashboard</h2>
       <GroupForm />
       <hr />
       <GroupsList />
-      
-      
     </StoreProvider>
   );
 }
