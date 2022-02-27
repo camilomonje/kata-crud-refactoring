@@ -1,3 +1,12 @@
+# Solución
+
+De acuerdo a lo solicitado, se creo la solución que esta dentro de este repositorio, y a su vez realice un video explicando rapidamente todo el codigo y el funcionamiento del resultado.
+
+https://drive.google.com/file/d/1lmEbjS0j6oBLkYqv2YHF14L3gta-2wW5/view?usp=sharing
+
+
+
+
 # [Problema]
 
 Pueden ver los siguientes videos para poder comprender la base del código fuente dentro de este repositorio. 
