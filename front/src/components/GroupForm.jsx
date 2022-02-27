@@ -36,22 +36,25 @@ const GroupForm = () => {
   };
 
   return (
-    <form ref={formGroupRef}>
+    <form ref={formGroupRef} className="input-group mb-3">
       <input
         type="text"
         placeholder="Lista de TO-DO"
         name="groupName"
+        className="form-control"
         onChange={(event) => {
           setState({ ...state, groupName: event.target.value.toUpperCase() });
         }}
       />
-      <button
-        className="btn-success"
-        disabled={!state.groupName}
-        onClick={onAdd}
-      >
-        Nueva Lista
-      </button>
+      <div className="input-group-append">
+        <button
+          className="btn btn-success"
+          disabled={!state.groupName}
+          onClick={onAdd}
+        >
+          Nueva Lista
+        </button>
+      </div>
     </form>
   );
 };

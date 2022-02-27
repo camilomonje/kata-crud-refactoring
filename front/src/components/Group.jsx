@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 import Store from "./Store.js";
@@ -17,35 +17,41 @@ const Group = ({ group }) => {
   };
 
   return (
-    <Fragment>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <h5>{group.groupName}</h5>
-              </td>
-              <td>
-                <button
-                  className="btn-danger"
-                  onClick={() => onDelete(group.groupId)}
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div>
+      <div className="border border-dark">
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <br />
+                  <h5>{group.groupName}</h5>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => onDelete(group.groupId)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div>
-        <TaskForm group={group} />
+        <div>
+          <TaskForm group={group} />
+        </div>
+        <div>
+          <TaskList todoList={group.toDoDtos} />
+        </div>
+        <br />
       </div>
       <div>
-        <TaskList todoList={group.toDoDtos} />
+        <br />
       </div>
-      <hr></hr>
-    </Fragment>
+    </div>
   );
 };
 export default Group;

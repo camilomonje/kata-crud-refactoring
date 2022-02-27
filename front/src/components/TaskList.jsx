@@ -14,9 +14,9 @@ const TaskList = (props) => {
         <table>
           <thead>
             <tr>
-              <td>ID</td>
-              <td>Tarea</td>
-              <td>¿Completado?</td>
+              <td><h6>ID</h6></td>
+              <td><h6>TAREA</h6></td>
+              <td><h6>¿COMPLETADO?</h6></td>
             </tr>
           </thead>
           <tbody>

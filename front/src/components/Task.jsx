@@ -43,16 +43,17 @@ const Task = ({ todo }) => {
       <td>{todo.id}</td>
       <td>{todo.name}</td>
       <td>
-        <input
-          className="checkbox"
-          type="checkbox"
-          defaultChecked={todo.completed}
-          onChange={(event) => onChange(event, todo)}
-        ></input>
+        <div className="row justify-content-center align-items-center">
+          <input
+            type="checkbox"
+            defaultChecked={todo.completed}
+            onChange={(event) => onChange(event, todo)}
+          ></input>
+        </div>
       </td>
       <td>
         <button
-          className="btn-danger"
+          className="btn btn-danger"
           onClick={() => onDelete(todo.id, todo.groupId)}
         >
           Eliminar
@@ -60,7 +61,7 @@ const Task = ({ todo }) => {
       </td>
       <td>
         <button
-          className="btn-primary"
+          className="btn btn-info"
           disabled={todo.completed}
           onClick={() => onEdit(todo)}
         >

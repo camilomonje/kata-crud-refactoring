@@ -20,7 +20,7 @@ const GroupsList = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div >
       {currentList.map((group) => {
         return <Group key={group.groupId} group={group} />;
       })}

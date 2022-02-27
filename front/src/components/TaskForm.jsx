@@ -74,35 +74,38 @@ const TaskForm = ({ group }) => {
 
   return (
     <div>
-      <form ref={formRef}>
+      <form ref={formRef} className="input-group mb-3">
         <input
           id="texto"
           type="text"
           name="name"
+          className="form-control"
           placeholder="¿Qué piensas hacer hoy?"
           defaultValue={def}
           onChange={(event) => {
             setState({ ...state, name: event.target.value });
           }}
         ></input>
-        {est && (
-          <button
-            className="btn-primary"
-            disabled={!state.name}
-            onClick={onEdit}
-          >
-            Actualizar
-          </button>
-        )}
-        {!est && (
-          <button
-            className="btn-success"
-            disabled={!state.name}
-            onClick={onAdd}
-          >
-            Crear
-          </button>
-        )}
+        <div className="input-group-append">
+          {est && (
+            <button
+              className="btn btn-primary"
+              disabled={!state.name}
+              onClick={onEdit}
+            >
+              Actualizar
+            </button>
+          )}
+          {!est && (
+            <button
+              className="btn btn-success"
+              disabled={!state.name}
+              onClick={onAdd}
+            >
+              Crear
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
