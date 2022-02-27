@@ -49,7 +49,7 @@ const GroupForm = () => {
       <div className="input-group-append">
         <button
           className="btn btn-success"
-          disabled={!state.groupName}
+          disabled={(!state.groupName) || (state.groupName.charAt(0) === " ")}
           onClick={onAdd}
         >
           Nueva Lista

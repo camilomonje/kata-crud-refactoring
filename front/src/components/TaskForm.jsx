@@ -99,7 +99,7 @@ const TaskForm = ({ group }) => {
           {!est && (
             <button
               className="btn btn-success"
-              disabled={!state.name}
+              disabled={(!state.name) || (state.name.charAt(0) === " ")}
               onClick={onAdd}
             >
               Crear
