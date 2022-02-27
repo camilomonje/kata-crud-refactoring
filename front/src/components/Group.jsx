@@ -19,7 +19,7 @@ const Group = ({ group }) => {
   return (
     <div>
       <div className="border border-dark">
-        <div>
+        <div className="mx-3"> 
           <table>
             <tbody>
               <tr>
@@ -40,10 +40,10 @@ const Group = ({ group }) => {
           </table>
         </div>
 
-        <div>
+        <div className="mx-3">
           <TaskForm group={group} />
         </div>
-        <div>
+        <div className="mx-3">
           <TaskList todoList={group.toDoDtos} />
         </div>
         <br />
