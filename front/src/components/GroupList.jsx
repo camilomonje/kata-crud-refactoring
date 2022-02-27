@@ -19,21 +19,14 @@ const GroupsList = () => {
       });
   }, [dispatch]);
 
-  const onDelete = (id) => {
-    console.log("Delete " + id);
-    fetch(HOST_API + "/" + id + "/group", {
-      method: "DELETE",
-    }).then((listGroup) => {
-      dispatch({ type: "delete-group", id });
-    });
-  };
-
+  
   return (
     <div>
       {currentList.map((group) => {
-        return <Group key={group.groupId} onDelete={onDelete} group={group} />;
+        return <Group key={group.groupId} group={group} />;
       })}
     </div>
   );
+    
 };
 export default GroupsList;

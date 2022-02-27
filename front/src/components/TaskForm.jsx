@@ -29,8 +29,8 @@ const TaskForm = ({groupId}) => {
       },
     })
       .then((response) => response.json())
-      .then((todo) => {
-        dispatch({ type: "add-item", item: todo });
+      .then((listGroup) => {
+        dispatch({ type: "update-listGroup", listGroup });
         setState({ name: "" });
         formRef.current.reset();
       });
@@ -43,6 +43,7 @@ const TaskForm = ({groupId}) => {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
+      groupId: groupId
     };
 
     fetch(HOST_API + "/todo", {
@@ -54,7 +55,7 @@ const TaskForm = ({groupId}) => {
     })
       .then((response) => response.json())
       .then((todo) => {
-        dispatch({ type: "update-item", item: todo });
+        dispatch({ type: "update-act", item: todo });
         setState({ name: "" });
         formRef.current.reset();
       });

@@ -6,6 +6,8 @@ import co.com.sofka.crud.models.mapper.ToDoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ToDoRepository implements IToDoRepository {
 
@@ -24,6 +26,7 @@ public class ToDoRepository implements IToDoRepository {
         Iterable<ToDo> toDos = toDoCrudRepository.findAll();
         return mapper.toToDoDtos(toDos);
     }
+
     //El controlador envía un objeto de dominio para ser guardado y espera de vuelta el mismo objeto de dominio
     // debemos transformar este DTO a una entidad, enviarsela al crudRepository que nos regresa una entidad,
     // mapeamos esta entidad de vuelta a DTo para retornarla al controller

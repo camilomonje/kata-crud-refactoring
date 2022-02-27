@@ -1,8 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
+import Store from "./Store.js";
+import C from "../utils/constants";
+const HOST_API = C.HOST_API;
 
-const Group = ({ onDelete, group }) => {
+const Group = ({ group }) => {
+
+  const {
+    dispatch
+  } = useContext(Store);
+
+  const onDelete = (id) => {
+    console.log("Delete " + id);
+    fetch(HOST_API + "/" + id + "/group", {
+      method: "DELETE",
+    }).then((listGroup) => {
+      dispatch({ type: "delete-group", id });
+    });
+  };
+
   return (
     <Fragment>
       <div>

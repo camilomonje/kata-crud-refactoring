@@ -19,9 +19,6 @@ const GroupForm = () => {
       groupName : state.groupName,
       toDoDtos: []
     };
-    console.log("onADD")
-    console.log(request.groupName);
-
     
     fetch(HOST_API + "/group", {
       method: "POST",

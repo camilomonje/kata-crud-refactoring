@@ -9,8 +9,8 @@ function reducer(state, action) {
       const groupUp = state.group.listGroup;
       groupUp.push(action.itemGroup);
       return { ...state, group: { listGroup: groupUp, itemGroup: {} } };
-    
-      case "delete-group":
+
+    case "delete-group":
       const groupUpDelete = state.group;
       const listGroupUpdate = groupUpDelete.listGroup.filter((item) => {
         return item.groupId !== action.id;
@@ -19,37 +19,76 @@ function reducer(state, action) {
       return { ...state, group: groupUpDelete };
 
     case "update-item":
-      const todoUpItem = state.todo;
-      const listUpdateEdit = todoUpItem.list.map((item) => {
-        if (item.id === action.item.id) {
-          return action.item;
+      const groupList = state.group.listGroup;
+      const newGroupList = groupList.map((group) => {
+        if (group.groupId === action.item.groupId) {
+          const newToDoDtos = group.toDoDtos.map((todo) => {
+            if (todo.id === action.item.id) {
+              return action.item;
+            }
+            return todo;
+          });
+          return { ...group, toDoDtos: newToDoDtos };
         }
+        return group;
+      });
+      const groupListUpdate = { listGroup: newGroupList, itemGroup: {} };
+      return { ...state, group: groupListUpdate };
 
-        return item;
-      });
-      todoUpItem.list = listUpdateEdit;
-      todoUpItem.item = {};
-      return { ...state, todo: todoUpItem };
     case "delete-item":
-      const todoUpDelete = state.todo;
-      const listUpdate = todoUpDelete.list.filter((item) => {
-        return item.id !== action.id;
+      const grouplist = state.group.listGroup;
+      const newGrouplist = grouplist.map((group) => {
+        if (group.groupId === action.groupId) {
+          const newToDodtos = group.toDoDtos.filter((item) => {
+            return item.id !== action.id;
+          });
+          return { ...group, toDoDtos: newToDodtos };
+        }
+        return group;
       });
-      todoUpDelete.list = listUpdate;
-      return { ...state, todo: todoUpDelete };
+
+      const groupListUp = { listGroup: newGrouplist, itemGroup: {} };
+      return { ...state, group: groupListUp };
+
     case "update-list":
       const todoUpList = state.todo;
       todoUpList.list = action.list;
       return { ...state, todo: todoUpList };
+
+    case "update-act":
+      const groupAct = state.group.listGroup;
+      const newGroupAct = groupAct.map((group) => {
+        if (group.groupId === action.item.groupId) {
+          const newToDoDtos = group.toDoDtos.map((todo) => {
+            if (todo.id === action.item.id) {
+              return action.item;
+            }
+            return todo;
+          });
+
+          return { ...group, toDoDtos: newToDoDtos };
+        }
+        return group;
+      });
+
+      const stateTodo = state.todo;
+      stateTodo.item = {};
+
+      const groupListAct = { listGroup: newGroupAct, itemGroup: {} };
+      return { ...state, group: groupListAct, todo: stateTodo };
+
     case "edit-item":
-      console.log("edit")
-      const todoUpEdit = state.todo;
-      todoUpEdit.item = action.item;
-      return { ...state, todo: todoUpEdit };
+      const groupUpEdit = state.group;
+      
+      // const todoUpEdit = state.todo;
+      // todoUpEdit.item = action.item;
+      // return { ...state, todo: todoUpEdit };
+
     case "add-item":
       const todoUp = state.todo.list;
       todoUp.push(action.item);
       return { ...state, todo: { list: todoUp, item: {} } };
+
     default:
       return state;
   }
