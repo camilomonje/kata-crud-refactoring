@@ -57,7 +57,7 @@ const Task = ({todo}) => {
         <button onClick={() => onDelete(todo.id, todo.groupId)}>Eliminar</button>
       </td>
       <td>
-        <button onClick={() => onEdit(todo)}>Editar</button>
+        <button disabled={todo.completed} onClick={() => onEdit(todo)}>Editar</button>
       </td>
     </Fragment>
   );

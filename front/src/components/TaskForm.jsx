@@ -67,9 +67,7 @@ const TaskForm = ({ group }) => {
   if (group.groupId === item.groupId) {
     def = item.name;
 
-    if (item.id === {}) {
-      est = false;
-    } else {
+    if (item.id !== {}) {
       est = true;
     }
   }

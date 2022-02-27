@@ -6,7 +6,6 @@ import Task from "./Task.jsx";
 
 const TaskList = (props) => {
   
-   
   const decorationDone = {
     textDecoration: "line-through",
   };
