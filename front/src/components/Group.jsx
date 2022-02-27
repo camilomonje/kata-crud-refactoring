@@ -40,7 +40,7 @@ const Group = ({ group }) => {
       </div>
 
       <div>
-        <TaskForm groupId={group.groupId} />
+        <TaskForm group={group} />
       </div>
       <div>
         <TaskList todoList={group.toDoDtos} />

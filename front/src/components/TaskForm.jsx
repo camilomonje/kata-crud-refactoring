@@ -3,7 +3,7 @@ import Store from "./Store.js";
 import C from "../utils/constants";
 const HOST_API = C.HOST_API;
 
-const TaskForm = ({groupId}) => {
+const TaskForm = ({ group }) => {
   const formRef = useRef(null);
   const {
     dispatch,
@@ -18,7 +18,7 @@ const TaskForm = ({groupId}) => {
     const request = {
       name: state.name,
       completed: false,
-      groupId: groupId
+      groupId: group.groupId,
     };
 
     fetch(HOST_API + "/todo", {
@@ -43,7 +43,7 @@ const TaskForm = ({groupId}) => {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
-      groupId: groupId
+      groupId: group.groupId,
     };
 
     fetch(HOST_API + "/todo", {
@@ -61,21 +61,35 @@ const TaskForm = ({groupId}) => {
       });
   };
 
+  var def = "";
+  var est = false;
+
+  if (group.groupId === item.groupId) {
+    def = item.name;
+
+    if (item.id === {}) {
+      est = false;
+    } else {
+      est = true;
+    }
+  }
+
   return (
     <div>
-    <form ref={formRef}>
-      <input
-        type="text"
-        name="name"
-        placeholder="¿Qué piensas hacer hoy?"
-        defaultValue={item.name}
-        onChange={(event) => {
-          setState({ ...state, name: event.target.value });
-        }}
-      ></input>
-      {item.id && <button onClick={onEdit}>Actualizar</button>}
-      {!item.id && <button onClick={onAdd}>Crear</button>}
-    </form>
+      <form ref={formRef}>
+        <input
+          id="texto"
+          type="text"
+          name="name"
+          placeholder="¿Qué piensas hacer hoy?"
+          defaultValue={def}
+          onChange={(event) => {
+            setState({ ...state, name: event.target.value });
+          }}
+        ></input>
+        {est && <button onClick={onEdit}>Actualizar</button>}
+        {!est && <button onClick={onAdd}>Crear</button>}
+      </form>
     </div>
   );
 };
