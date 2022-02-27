@@ -1,16 +1,16 @@
 function reducer(state, action) {
   switch (action.type) {
-    case "update-listGroup":
+    case "update-listGroup": //GroupList useEffect - TaskForm onAdd
       const groupUpList = state.group;
       groupUpList.listGroup = action.listGroup;
       return { ...state, group: groupUpList };
 
-    case "add-group":
+    case "add-group": //GroupForm onAdd
       const groupUp = state.group.listGroup;
       groupUp.push(action.itemGroup);
       return { ...state, group: { listGroup: groupUp, itemGroup: {} } };
 
-    case "delete-group":
+    case "delete-group": //Group onDelete
       const groupUpDelete = state.group;
       const listGroupUpdate = groupUpDelete.listGroup.filter((item) => {
         return item.groupId !== action.id;
@@ -18,7 +18,7 @@ function reducer(state, action) {
       groupUpDelete.listGroup = listGroupUpdate;
       return { ...state, group: groupUpDelete };
 
-    case "update-item":
+    case "update-item": //Task onChange
       const groupList = state.group.listGroup;
       const newGroupList = groupList.map((group) => {
         if (group.groupId === action.item.groupId) {
@@ -35,7 +35,7 @@ function reducer(state, action) {
       const groupListUpdate = { listGroup: newGroupList, itemGroup: {} };
       return { ...state, group: groupListUpdate };
 
-    case "delete-item":
+    case "delete-item": //Task onDelete
       const grouplist = state.group.listGroup;
       const newGrouplist = grouplist.map((group) => {
         if (group.groupId === action.groupId) {
@@ -50,12 +50,7 @@ function reducer(state, action) {
       const groupListUp = { listGroup: newGrouplist, itemGroup: {} };
       return { ...state, group: groupListUp };
 
-    case "update-list":
-      const todoUpList = state.todo;
-      todoUpList.list = action.list;
-      return { ...state, todo: todoUpList };
-
-    case "update-act":
+    case "update-act": //TaskForm onEdit
       const groupAct = state.group.listGroup;
       const newGroupAct = groupAct.map((group) => {
         if (group.groupId === action.item.groupId) {
@@ -65,7 +60,6 @@ function reducer(state, action) {
             }
             return todo;
           });
-
           return { ...group, toDoDtos: newToDoDtos };
         }
         return group;
@@ -77,15 +71,10 @@ function reducer(state, action) {
       const groupListAct = { listGroup: newGroupAct, itemGroup: {} };
       return { ...state, group: groupListAct, todo: stateTodo };
 
-    case "edit-item":
+    case "edit-item": //Task onEdit
       const todoUpEdit = state.todo;
       todoUpEdit.item = action.item;
       return { ...state, todo: todoUpEdit };
-
-    case "add-item":
-      const todoUp = state.todo.list;
-      todoUp.push(action.item);
-      return { ...state, todo: { list: todoUp, item: {} } };
 
     default:
       return state;
